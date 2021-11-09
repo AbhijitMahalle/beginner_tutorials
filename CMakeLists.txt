@@ -11,6 +11,17 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  message_generation
+)
+
+add_service_files(
+  FILES
+  AddTwoInts.srv
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
 )
 
 
@@ -46,3 +57,7 @@ target_link_libraries(talker ${catkin_LIBRARIES})
 
 add_executable(listener src/listener.cpp src/ros_subscriber.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
+
+add_executable(addNumService src/addTwoNums.cpp)
+target_link_libraries(addNumService ${catkin_LIBRARIES})
+add_dependencies(addNumService beginner_tutorials_generate_messages_cpp)
