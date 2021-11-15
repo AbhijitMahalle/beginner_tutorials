@@ -29,8 +29,8 @@ This is a simple example to run publisher and subscriber with ros service in ROS
 ### Running with the launch file
 - Run using launch file: This will spawn:
     - a ros service node: `/abhi-mah/add_two_numbers`
-    - a publisher node: `/anubhavp/talker`
-    - a subscriber node: `/anubhavp/listener`
+    - a publisher node: `/abhi-mah/talker`
+    - a subscriber node: `/abhi-mah/listener`
 ```
 roslaunch beginner_tutorials beginner_tutorials.launch buffer_size:=1 loop_rate:=10
 # arguments are:
@@ -40,7 +40,7 @@ roslaunch beginner_tutorials beginner_tutorials.launch buffer_size:=1 loop_rate:
 
 - To call the service:
 ```
-rosservice call /anubhavp/modify_string_service "inputstring: 'Let us learn ROS.'"
+rosservice call /abhi-mah/add_two_nos "inputstring: 'Let us learn ROS.'"
 ```
 
 ### Running without the launch file
