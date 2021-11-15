@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="beginner_tutorials" name="addTwoNums" type="addTwoNums"/>
+    <node pkg="beginner_tutorials" name="talker" type="talker"
+          args="$(arg buffer_size)
+                $(arg loop_rate)"
+    />
+    <test test-name="unit_tests" pkg="beginner_tutorials" type="talker_test" />
+</launch>
