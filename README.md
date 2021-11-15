@@ -17,7 +17,7 @@ This is a simple example to run publisher and subscriber with ros service in ROS
  ```
  - Clone the repository into the workspace:
  ```
- git clone https://github.com/anubhavparas/beginner_tutorials.git
+ git clone https://github.com/abhi-mah/beginner_tutorials.git
  ```
  - Build the workspace:
  ```
@@ -28,7 +28,7 @@ This is a simple example to run publisher and subscriber with ros service in ROS
 
 ### Running with the launch file
 - Run using launch file: This will spawn:
-    - a ros service node: `/anubhavp/modify_string_service`
+    - a ros service node: `/abhi-mah/add_two_numbers`
     - a publisher node: `/anubhavp/talker`
     - a subscriber node: `/anubhavp/listener`
 ```
