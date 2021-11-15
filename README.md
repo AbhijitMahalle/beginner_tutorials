@@ -15,7 +15,7 @@ This is a simple example to run publisher and subscriber in ROS Melodic.
  ```
  - Clone the repository into the workspace:
  ```
- git clone https://github.com/anubhavparas/beginner_tutorials.git
+ git clone https://github.com/abhi-mah/beginner_tutorials.git
  ```
  - Build the workspace:
  ```
