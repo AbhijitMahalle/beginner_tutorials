@@ -21,71 +21,47 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
 * 
-* @file ros_publisher.hpp
+* @file broadcaster.hpp
 * @author Abhijit Mahalle
-* @brief Class to publish message 
+* @brief Class that broadcastes frame 
 * @version 0.1
-* @date 2021-11-01
+* @date 2021-11-15
 * 
 * @copyright Copyright (c) 2021
 * 
 */
 
-#ifndef SRC_BEGINNER_TUTORIALS_INCLUDE_BEGINNER_TUTORIALS_ROS_PUBLISHER_HPP_ //  NOLINT-CPP
-#define SRC_BEGINNER_TUTORIALS_INCLUDE_BEGINNER_TUTORIALS_ROS_PUBLISHER_HPP_ //  NOLINT-CPP
+#ifndef SRC_BEGINNER_TUTORIALS_INCLUDE_TFBROADCASTER_HPP_  //  NOLINT-CPP
+#define SRC_BEGINNER_TUTORIALS_INCLUDE_TFBROADCASTER_HPP_  //  NOLINT-CPP
 
 #include <ros/ros.h>
-#include <std_msgs/String.h>
-#include <sstream>
+#include <tf/transform_broadcaster.h>
 #include <string>
-#include <memory>
+#include <beginner_tutorials/position.hpp>
 
-#include <include/tfbroadcaster.hpp>
-
-/**
- * @brief Class to publish message
- * 
- */
-class ROSPublisher {
+class TfBroadcaster {
  public:
   /**
-  * @brief Constructor to create a new object
-  * 
-  * @param ros_node_h 
-  */
-  explicit ROSPublisher(ros::NodeHandle ros_node_h);
-
-  /**
-   * @brief Destructor for the object
+   * @brief Default constructor for the TfBroadcaster class
    * 
    */
-  virtual ~ROSPublisher();
+  TfBroadcaster();
 
   /**
-   * @brief Method to publish node
+   * @brief Default destructor for the TfBroadcaster class
    * 
    */
-  virtual void run_publisher();
-
- private:
-  /**
-   * Method that is the main access point in the ROS node.
-   */
-  ros::NodeHandle ros_node_h;
-  ros::Publisher chatter_pub;
-  ros::ServiceClient add_svc_client;
+  ~TfBroadcaster();
 
   /**
-   * Pointer to the ROSTfBroadcaster object to broadcast poses
+   * @brief 
    * 
+   * @param parent_frame 
+   * @param child_frame 
    */
-  std::shared_ptr<TfBroadcaster> tf_broadcast;
-
-   /**
-   * @brief Method to broadcast a static frame transform
-   * 
-   */
-  void broadcast_transformation();
+  virtual void broadcast(const Position& position,
+                        const std::string& parent_frame,
+                        const std::string& child_frame);
 };
 
-#endif  // SRC_BEGINNER_TUTORIALS_INCLUDE_BEGINNER_TUTORIALS_ROS_PUBLISHER_HPP_//  NOLINT-CPP
+#endif  // SRC_BEGINNER_TUTORIALS_INCLUDE_TFBROADCASTER_HPP_  //  NOLINT-CPP

@@ -31,6 +31,7 @@
 
 #include <beginner_tutorials/ros_publisher.hpp>
 #include <beginner_tutorials/AddTwoInts.h>
+#include <beginner_tutorials/position.hpp>
 
 ROSPublisher::ROSPublisher(ros::NodeHandle ros_node_h) {
   this->ros_node_h = ros_node_h;
@@ -60,6 +61,8 @@ void ROSPublisher::run_publisher() {
   ros::Rate loop_rate(10);
   int count = 0;
   int prime = 5;
+  TfBroadcaster tf_broadcaster;
+
   while (ros::ok()) {
     std_msgs::String msg;
 
@@ -71,6 +74,9 @@ void ROSPublisher::run_publisher() {
 
     ROS_INFO("%s", msg.data.c_str());
     this->chatter_pub.publish(msg);
+
+    Position pos(1, 2, 3, 1.54, 1.54, 1.54);
+    tf_broadcaster.broadcast(pos, "world", "talk");
 
     ros::spinOnce();
 

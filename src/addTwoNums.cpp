@@ -20,7 +20,7 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
-* @file ros_publisher.cpp
+* @file addTwoNums.cpp
 * @author Abhijit Mahalle
 * @brief Class for addTwoNums.cpp
 * @version 0.1

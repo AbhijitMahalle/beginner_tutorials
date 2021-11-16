@@ -47,7 +47,7 @@ void TfBroadcaster::broadcast(const Position& position,
     transform.setOrigin(tf::Vector3(position.x, position.y, position.z));
 
     tf::Quaternion q;
-    q.setRPY(position.roll, positionn.pitch, position.yaw);
+    q.setRPY(position.roll, position.pitch, position.yaw);
     transform.setRotation(q);
 
     br.sendTransform(

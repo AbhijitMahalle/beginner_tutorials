@@ -16,6 +16,7 @@
 int main(int argc, char** argv) {
   ros::init(argc, argv, "listener");
   ros::NodeHandle ros_node_h;
+  ROS_WARN_STREAM("Hellooooo");
   std::unique_ptr<ROSSubscriber> ros_sub(new ROSSubscriber(ros_node_h));
   ros_sub->run_subscriber();
   return 0;

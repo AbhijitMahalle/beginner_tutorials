@@ -1,8 +1,10 @@
 <launch>
-    <node pkg="beginner_tutorials" name="addTwoNums" type="addTwoNums"/>
+    <arg name="buffer_size" default="1" />
+    <arg name="loop_rate" default="10" />
+    <node pkg="beginner_tutorials" name="addTwoNums" type="addNumService"/>
     <node pkg="beginner_tutorials" name="talker" type="talker"
           args="$(arg buffer_size)
                 $(arg loop_rate)"
     />
-    <test test-name="unit_tests" pkg="beginner_tutorials" type="talker_test" />
+    <test test-name="unit_tests" pkg="beginner_tutorials" type="talker_test" name="talker_test" />
 </launch>

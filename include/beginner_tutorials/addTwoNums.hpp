@@ -21,9 +21,9 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
 * 
-* @file broadcaster.hpp
+* @file change_string.hpp
 * @author Abhijit Mahalle
-* @brief Class that broadcastes frame 
+* @brief Class that creates a service of adding two numbers
 * @version 0.1
 * @date 2021-11-15
 * 
@@ -31,37 +31,13 @@
 * 
 */
 
-#ifndef SRC_BEGINNER_TUTORIALS_INCLUDE_BEGINNER_TUTORIALS_ROSTF_BROADCASTER_HPP_  //  NOLINT-CPP
-#define SRC_BEGINNER_TUTORIALS_INCLUDE_BEGINNER_TUTORIALS_ROSTF_BROADCASTER_HPP_  //  NOLINT-CPP
+#ifndef SRC_BEGINNER_TUTORIALS_INCLUDE_ADDTWONUMS_HPP_ //NOLINT-CPP
+#define SRC_BEGINNER_TUTORIALS_INCLUDE_ADDTWONUMS_HPP_ //NOLINT-CPP
 
 #include <ros/ros.h>
-#include <tf/transform_broadcaster>
-#include <string>
-#include <include/position.hpp>
 
-class TfBroadcaster {
- public:
-  /**
-   * @brief Default constructor for the TfBroadcaster class
-   * 
-   */
-  TfBroadcaster();
+bool add(beginner_tutorials::AddTwoInts::Request &req,  // NOLINT-CPP
+         beginner_tutorials::AddTwoInts::Response &res) // NOLINT-CPP
+{};
 
-  /**
-   * @brief Default destructor for the TfBroadcaster class
-   * 
-   */
-  ~ROSTfBroadcaster();
-
-  /**
-   * @brief 
-   * 
-   * @param parent_frame 
-   * @param child_frame 
-   */
-  virtual void broadcast(const Position& position,
-                        const std::string& parent_frame,
-                        const std::string& child_frame);
-};
-
-#endif  // SRC_BEGINNER_TUTORIALS_INCLUDE_BEGINNER_TUTORIALS_ROSTF_BROADCASTER_HPP_  //  NOLINT-CPP
+#endif  // SRC_BEGINNER_TUTORIALS_INCLUDE_ADDTWONUMS_HPP_//NOLINT-CP

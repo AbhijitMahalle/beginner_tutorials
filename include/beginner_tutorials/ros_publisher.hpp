@@ -20,61 +20,74 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
- * @file ros_subscriber.hpp
- * @author Abhijit Mahalle
- * @brief  Class to subscribe to a message
- * @version 0.1
- * @date 2021-11-15
- * 
- * @copyright Copyright (c) 2021
- * 
- */
+* 
+* @file ros_publisher.hpp
+* @author Abhijit Mahalle
+* @brief Class to publish message 
+* @version 0.1
+* @date 2021-11-01
+* 
+* @copyright Copyright (c) 2021
+* 
+*/
 
-#ifndef SRC_BEGINNER_TUTORIALS_INCLUDE_BEGINNER_TUTORIALS_ROS_SUBSCRIBER_HPP_ //NOLINT-CPP
-#define SRC_BEGINNER_TUTORIALS_INCLUDE_BEGINNER_TUTORIALS_ROS_SUBSCRIBER_HPP_ //NOLINT-CPP
+#ifndef SRC_BEGINNER_TUTORIALS_INCLUDE_ROS_PUBLISHER_HPP_ //  NOLINT-CPP
+#define SRC_BEGINNER_TUTORIALS_INCLUDE_ROS_PUBLISHER_HPP_ //  NOLINT-CPP
 
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include <sstream>
 #include <string>
+#include <memory>
+
+#include <beginner_tutorials/tfbroadcaster.hpp>
 
 /**
- * @brief Class to publish message
- */
-class ROSSubscriber {
+* @brief Class to publish message
+* 
+*/
+class ROSPublisher {
  public:
   /**
   * @brief Constructor to create a new object
   * 
   * @param ros_node_h 
   */
-  explicit ROSSubscriber(ros::NodeHandle ros_node_h);
+  explicit ROSPublisher(ros::NodeHandle ros_node_h);
 
   /**
-   * @brief Destructor for the class object
-   * 
-   */
-  virtual ~ROSSubscriber();
+  * @brief Destructor for the object
+  * 
+  */
+  virtual ~ROSPublisher();
 
   /**
-   * @brief Method to run the publisher node
-   * 
-   */
-  virtual void run_subscriber();
+  * @brief Method to publish node
+  * 
+  */
+  virtual void run_publisher();
+
+  std::string call_service(int num1, int num2);
 
  private:
   /**
-   * Method that is the main access point in the ROS node.
-   */
+  * Method that is the main access point in the ROS node.
+  */
   ros::NodeHandle ros_node_h;
-  ros::Subscriber chatter_sub;
+  ros::Publisher chatter_pub;
+  ros::ServiceClient add_svc_client;
 
   /**
-   * @brief callback method for the subscriber
+   * Pointer to the ROSTfBroadcaster object to broadcast poses
    * 
-   * @param msg message read by the subsriber
    */
-  void chatter_call_back(const std_msgs::String::ConstPtr& msg);
+  std::shared_ptr<TfBroadcaster> tf_broadcast;
+
+  /**
+   * @brief Method to broadcast a static frame transform
+   * 
+   */
+  void broadcast_transformation();
 };
 
-#endif  // SRC_BEGINNER_TUTORIALS_INCLUDE_BEGINNER_TUTORIALS_ROS_SUBSCRIBER_HPP_//NOLINT-CPP
+#endif  // SRC_BEGINNER_TUTORIALS_INCLUDE_ROS_PUBLISHER_HPP_//  NOLINT-CPP

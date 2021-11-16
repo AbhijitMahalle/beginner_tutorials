@@ -37,6 +37,8 @@ ROSSubscriber::ROSSubscriber(ros::NodeHandle ros_node_h) {
 
 void ROSSubscriber::chatter_call_back(const std_msgs::String::ConstPtr& msg) {
     ROS_INFO("I heard you[%s]", msg->data.c_str());
+    ROS_WARN_STREAM("Message : " << msg->data.c_str());
+    this->message = msg->data.c_str();
 }
 
 void ROSSubscriber::run_subscriber() {

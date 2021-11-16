@@ -20,10 +20,9 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
-
- * @file talker.cpp
- * @author Abhijit Mahalle (abhimah@umd.edu)
- * @brief talker node to publish messages 
+ * @file ros_subscriber.hpp
+ * @author Abhijit Mahalle
+ * @brief  Class to subscribe to a message
  * @version 0.1
  * @date 2021-11-15
  * 
@@ -31,17 +30,56 @@
  * 
  */
 
+#ifndef SRC_BEGINNER_TUTORIALS_INCLUDE_ROS_SUBSCRIBER_HPP_ //NOLINT-CPP
+#define SRC_BEGINNER_TUTORIALS_INCLUDE_ROS_SUBSCRIBER_HPP_ //NOLINT-CPP
+
 #include <ros/ros.h>
 #include <std_msgs/String.h>
-#include <iostream>
-#include <memory>
 #include <sstream>
-#include <beginner_tutorials/ros_publisher.hpp>
+#include <string>
 
-int main(int argc, char **argv) {
-  ros::init(argc, argv, "talker");
+/**
+ * @brief Class to publish message
+ */
+class ROSSubscriber {
+ public:
+  /**
+  * @brief Constructor to create a new object
+  * 
+  * @param ros_node_h 
+  */
+  explicit ROSSubscriber(ros::NodeHandle ros_node_h);
+
+  /**
+   * @brief Destructor for the class object
+   * 
+   */
+  virtual ~ROSSubscriber();
+
+  /**
+   * @brief Method to run the publisher node
+   * 
+   */
+  virtual void run_subscriber();
+
+  /**
+   * @brief callback method for the subscriber
+   * 
+   * @param msg message read by the subsriber
+   */
+  void chatter_call_back(const std_msgs::String::ConstPtr& msg);
+
+  std::string get_message() {
+    return this->message;
+  }
+
+ private:
+  /**
+   * Method that is the main access point in the ROS node.
+   */
   ros::NodeHandle ros_node_h;
-  std::unique_ptr<ROSPublisher> ros_pub(new ROSPublisher(ros_node_h));
-  ros_pub->run_publisher();
-  return 0;
+  ros::Subscriber chatter_sub;
+  std::string message;
 }
+
+#endif  // SRC_BEGINNER_TUTORIALS_INCLUDE_ROS_SUBSCRIBER_HPP_//NOLINT-CPP

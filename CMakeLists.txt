@@ -66,6 +66,6 @@ add_dependencies(addNumService beginner_tutorials_generate_messages_cpp)
 ## Add gtest based cpp test target and link libraries
 if(CATKIN_ENABLE_TESTING)
 	find_package(rostest REQUIRED)
-	add_rostest_gtest(talker_test test/publisher_test.test test/test_ros_publisher.cpp src/ros_publisher.cpp src/tf_broadcaster.cpp)
+	add_rostest_gtest(talker_test test/publisher_test.test test/test_ros_publisher.cpp src/ros_publisher.cpp src/tfbroadcaster.cpp src/ros_subscriber.cpp)
   target_link_libraries(talker_test ${catkin_LIBRARIES})
 endif()
