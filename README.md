@@ -17,7 +17,7 @@ This is a simple example to run publisher and subscriber with ros service in ROS
  ```
  - Clone the repository into the workspace:
  ```
- git clone https://github.com/anubhavparas/beginner_tutorials.git
+ git clone https://github.com/abhi-mah/beginner_tutorials.git
  ```
  - Build the workspace:
  ```
@@ -28,9 +28,9 @@ This is a simple example to run publisher and subscriber with ros service in ROS
 
 ### Running with the launch file
 - Run using launch file: This will spawn:
-    - a ros service node: `/anubhavp/modify_string_service`
-    - a publisher node: `/anubhavp/talker`
-    - a subscriber node: `/anubhavp/listener`
+    - a ros service node: `/aabh-mah/add_two_numbers`
+    - a publisher node: `/abhi-mah/talker`
+    - a subscriber node: `/abhi-mah/listener`
 ```
 roslaunch beginner_tutorials beginner_tutorials.launch buffer_size:=1 loop_rate:=10
 # arguments are:
@@ -40,7 +40,7 @@ roslaunch beginner_tutorials beginner_tutorials.launch buffer_size:=1 loop_rate:
 
 - To call the service:
 ```
-rosservice call /anubhavp/modify_string_service "inputstring: 'Let us learn ROS.'"
+rosservice call /abhi-mah/add_two_nos "inputstring: 'Let us learn ROS.'"
 ```
 
 ### Running without the launch file
