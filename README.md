@@ -56,7 +56,7 @@ This is a simple example to run publisher and subscriber with ros service in ROS
 
 - To call the service:
     ```
-    rosservice call /anubhavp/modify_string_service "inputstring: 'Let us learn ROS.'"
+    rosservice call /abhimah/addTwoNums "inputstring: 'Let us learn ROS.'"
     ```
 
 - `/talker` node also broadcasts tf frame information from `/world` to `/talk` frame. [Example](results/tf_echo_world_to_talk.png). 
